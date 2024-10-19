@@ -22,6 +22,7 @@ export default function LoginPage() {
             }, {
                 withCredentials: true
             })
+            console.log(response)
             if (response.status == 201) router.push('/dashboard')
             setSubmitting(false)
         } catch (e) {
