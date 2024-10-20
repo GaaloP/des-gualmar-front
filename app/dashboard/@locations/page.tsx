@@ -3,6 +3,7 @@ import { Location } from "@/entities";
 import axios from "axios"
 import { cookies } from "next/headers";
 import SelectLoction from "./_components/SelectLocation";
+import LocationCard from "./_components/LocationCard";
 const LocationPage = async ({ searchParams }: {
     searchParams: { [key: string]: string | string[] | undefined }
 }) => {
@@ -30,6 +31,9 @@ const LocationPage = async ({ searchParams }: {
             <div className="w-full flex flex-col items-center h-[90vh] bg-yellow-50">
                 <div className="w-1/2 my-10">
                     <SelectLoction locations={data} store={searchParams?.store} />
+                </div>
+                <div className="w-8/12">
+                    <LocationCard store={searchParams.store}/>
                 </div>
             </div>
         </div>
