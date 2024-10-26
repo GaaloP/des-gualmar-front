@@ -5,6 +5,9 @@ import LocationCard from "./_components/LocationCard";
 import FormNewLocation from "./_components/FormNewLocation";
 import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
+import UpdateLocation from "./_components/updateLocation";
+
 const LocationPage = async ({ searchParams }: {
     searchParams: { [key: string]: string | string[] | undefined }
 }) => {
@@ -39,7 +42,12 @@ const LocationPage = async ({ searchParams }: {
                 <div className="w-6/12">
                     <FormNewLocation searchParams={searchParams}/>
                 </div>
-                <DeleteLocationButton store={searchParams.store}/>
+                <div className="flex flex-row flex-grow-0 gap-10 items-center">
+                    <UpdateLocation store={searchParams.store}>
+                        <FormUpdateLocation store={searchParams.store}/>
+                    </UpdateLocation>
+                    <DeleteLocationButton store={searchParams.store}/>
+                </div>
             </div>
         </div>
     )
