@@ -1,5 +1,5 @@
 import { Spinner } from "@nextui-org/react";
 
-export default function LoadinsCountManagers(){
+export default function LoadingCountManagers(){
     return <Spinner size="lg"/>
 }
