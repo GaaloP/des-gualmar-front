@@ -10,7 +10,7 @@ export default function AuthLayout({
         <div className="place-content-center place-self-center place-items-center text-center">
             <div className="flex flex-col items-center my-y bottom-10 relative">
                 <Image
-                    src="Walmart_logo.svg"
+                    src=""
                     alt="Logo de GualmaR"
                     width={250}
                     height={0}

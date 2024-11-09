@@ -3,21 +3,25 @@ import { Manager } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 
 export default async function CountManagersPage(){
-    const response = await fetch(`${API_URL}/managers`,{
+    const response = await fetch(`${API_URL}/managers`, {
         headers: {
-            ...authHeaders
+            ...authHeaders()
         },
         next: {
             tags: ["dashboard:managers"]
         }
     })
-    const manager: Manager[] = await response.json()
-    const countNoStore = manager.filter((manager: Manager)=> !manager.location)
-    let max: number
+    const managers: Manager[] = await response.json()
+    const countNoStore = managers.filter((manager: Manager) => !manager.location).length
+    let max = 0
+    managers.forEach((manager: Manager) => {
+        if (manager.managerSalary > max) { max = manager.managerSalary}
+    })
     return(
-        <div className="font-blod">
-            <h1>Hay {manager.length} manager{manager.length > 1 ? "s" : ""}</h1>
-            <h1>Hay {countNoStore.length} manager{countNoStore.length > 1 ? "s" : ""} sin tienda</h1>
+        <div className="font-bold">
+            <h1>Hay {managers.length} gerente{managers.length != 1 ? "s" : ""}.</h1>
+            <h1>Hay {countNoStore} sin tienda.</h1>
+            <h1>El salario más alto es {max}.</h1>
         </div>
     )
 }
