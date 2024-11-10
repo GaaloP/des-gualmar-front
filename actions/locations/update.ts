@@ -22,6 +22,7 @@ export async function updateLocation(store: string, formData: FormData) {
         }
     }
     location.locationLatLng = locationLatLng;
+    
     const response = await fetch(`${API_URL}/locations/${store}`, {
         body: JSON.stringify(location),
         headers: {
@@ -31,6 +32,7 @@ export async function updateLocation(store: string, formData: FormData) {
         method: "PATCH"
     })
     const {locationId}: Location = await response.json()
+    
     if (response.status == 200){ 
         revalidateTag("dashboard:locations") 
         revalidateTag(`dashboard:locations:${store}`)

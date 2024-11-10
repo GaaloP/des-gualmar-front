@@ -26,10 +26,10 @@ export async function createLocation(formData: FormData): Promise<void> {
         body: JSON.stringify(location),
         headers: {
             ...authHeaders(),
-            "conten-type": "application/json" 
+            'content-type': "application/json" 
         },
         method: "POST"
-    })
+    })    
     const {locationId}: Location = await response.json()
     if (response.status == 201){ 
         revalidateTag("dashboard:locations")
