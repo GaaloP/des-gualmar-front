@@ -14,14 +14,14 @@ export default async function FormUpdateManager({ manager }: { manager: Manager 
     })
     const stores = await response.json()
     return (
-        <form action={updateManagerId} className="bg-blue-400 rounded-md flex flex-col flex-grow-0 gap-2">
-            <h1>Actualizar Gerente</h1>
+        <form action={updateManagerId} className="bg-blue-400 py-2 px-4 flex flex-col gap-6 w-full rounded-lg">
+            <h1 className="text-2xl text-white font-semibold text-center">Actualizar Gerente</h1>
             <Input defaultValue={manager.managerName} name="managerName" label="Nombre" required/>
             <Input defaultValue={manager.managerEmail} name="managerEmail" label="Email" required/>
             <Input defaultValue={String(manager.managerSalary)} name="managerSalary" label="Salario" required/>
             <Input defaultValue={manager.managerPhoneNumber} name="managerPhoneNumber" label="Teléfono" required />
             <SelectStore stores={stores} defaultStore={manager?.location?.locationId}/>
-            <Button color="primary" type="submit">Update</Button>
+            <Button color="primary" type="submit">Actualizar</Button>
         </form>
     )
 }
