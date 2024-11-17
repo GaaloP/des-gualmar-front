@@ -1,7 +1,7 @@
 import { Provider } from "@/entities";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
-export default function ({provider}: {provider: Provider}){
+export default function ProviderCard ({provider}: {provider: Provider}){
     return (
         <Card>
             <CardHeader>{provider.providerName}</CardHeader>
