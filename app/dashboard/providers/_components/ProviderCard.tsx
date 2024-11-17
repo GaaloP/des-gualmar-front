@@ -5,6 +5,7 @@ export default function ProviderCard ({provider}: {provider: Provider}){
     return (
         <Card className="w-full max-w-[350px]">
             <CardHeader><b>{provider.providerName}</b></CardHeader>
+            <p></p>
             <Divider/>
             <CardBody>
                 <p>Email: <b>{provider.providerEmail}</b></p>
