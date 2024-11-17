@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Button } from "@nextui-org/react"
 import { LuPlus } from "react-icons/lu"
 import ProviderCard from "./_components/ProviderCard"
+import CreateProvider from "./_components/CreateProvider"
+import FormCreateProvider from "./_components/FormCreateProvider"
 
 const ProvidersPage = async () => {
     const response = await fetch(`${API_URL}/providers`, {
@@ -16,7 +18,9 @@ const ProvidersPage = async () => {
 
     return (
         <div className="flex flex-col flex-grow-0 items-end w-full px-10 pt-10 h-[90vh]">
-            <Button className="w-fit" color="primary"><LuPlus size="20" /></Button>
+            <CreateProvider>
+                <FormCreateProvider/>
+            </CreateProvider>
             <div className="flex flex-wrap w-full py-20 flex-grow-0 gap-14">
                 {providers.map((provider: Provider) => (
                     <Link key={provider.providerId} className="hover:scale-110 transition-transform" href={{ pathname: `/dashboard/providers/${provider.providerId}` }}>
