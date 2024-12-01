@@ -4,23 +4,22 @@ import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
 
-export default async function updateEmployee(employeeId: string, formData: FormData) {
+export default async function createEmployee(formData: FormData) {
     let employee: any = {}
     for (const key of formData.keys()) {
-        if (!key.includes("$ACTION")) {
-            employee[key] = formData.get(key)
-        }
+        employee[key] = formData.get(key)
     }
-    const response = await fetch(`${API_URL}/employees/${employeeId}`, {
+    const response = await fetch(`${API_URL}/employees`, {
         body: JSON.stringify(employee),
         headers: {
             ...authHeaders(),
             'content-type': "application/json"
         },
-        method: "PATCH"
+        method: "POST"
     })
-    if (response.status == 200) {
+    if (response.status == 201) {
         revalidateTag("dashboard:employees")
-        revalidateTag(`dashboard:employees:${employeeId}`)
     }
+    
+    console.log(await response.json())
 }

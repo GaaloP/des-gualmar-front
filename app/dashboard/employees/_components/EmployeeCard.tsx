@@ -26,7 +26,7 @@ export default function EmployeeCard({ employee }: { employee: Employee }) {
             </CardBody>
             <CardFooter className="absolute bottom-0 py-2 h-14">
                 <Link href={`/dashboard/employees/${employee.employeeId}`}>
-                    <Button variant="ghost">Actualizar datos</Button>
+                    <Button color="primary">Actualizar datos</Button>
                 </Link>
             </CardFooter>
         </Card>

@@ -26,12 +26,8 @@ export default function ManagerCard({ data }: { data: Manager }) {
                 </div>
                 {data.location ? (
                     <>
-                        <iframe
-                            className="border-2 border-blue-800 rounded-md my-2"
-                            src={`https://www.google.com.mx/maps/@20.3908239,-99.9576856,15z?entry=ttu&g_ep=EgoyMDI0MTAyMi4wIKXMDSoASAFQAw%3D%3D`}
-                            width="300"
-                            height="200">
-                        </iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4569.178214754168!2d-100.43324441279447!3d20.676678276566566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35ac75ec22e47%3A0xe2c0d892850c0522!2sWalmart%20Juriquilla!5e0!3m2!1ses-419!2smx!4v1733012146196!5m2!1ses-419!2smx" width="300" height="200"   loading="lazy"></iframe>
+            
                     </>
                 ) : (
                     <p className="w-full text-3xl">No hay tienda</p>
