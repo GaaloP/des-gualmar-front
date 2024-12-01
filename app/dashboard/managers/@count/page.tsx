@@ -8,6 +8,7 @@ export default async function CountManagersPage(){
         headers: {
             ...authHeaders()
         },
+        method: "GET",
         next: {
             tags: ["dashboard:managers"]
         }

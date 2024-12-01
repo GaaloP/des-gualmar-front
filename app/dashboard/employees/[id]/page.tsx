@@ -8,6 +8,7 @@ import DeleteEmployee from "./_components/DeleteEmployee"
 import CreateUser from "./_components/CreateUser"
 import FormCreateUserEmployee from "./_components/FormCreateUser"
 import { LuUser } from "react-icons/lu"
+import FormUpdateUser from "./_components/FormUpdateUser"
 
 export default async function EmployeePage({ params }: { params: { id: string } }) {
     const response = await fetch(`${API_URL}/employees/${params.id}`, {
@@ -22,12 +23,14 @@ export default async function EmployeePage({ params }: { params: { id: string } 
                 <div className="flex flex-col py-2 items-center">
                     <EmployeeCard employee={employee} />
                     <div className="w-full gap-2 flex py-2 flex-row items-center justify-center">
-                    <DeleteEmployee employeeId={employee.employeeId} />
-                    {!employee.user && (
+                        <DeleteEmployee employeeId={employee.employeeId} />
                         <CreateUser >
-                            <FormCreateUserEmployee employee={employee} />
+                            {!employee.user ? (
+                                <FormCreateUserEmployee employee={employee} />
+                            ) : (
+                                <FormUpdateUser user={employee.user} />
+                            )}
                         </CreateUser>
-                    )}
                     </div>
                 </div>
             </div>

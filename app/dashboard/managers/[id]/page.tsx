@@ -12,11 +12,13 @@ export default async function ManagerPage({ params }: { params: { id: string } }
         headers: {
             ...authHeaders()
         },
+        method: "GET",
         next: {
             tags: [`dashboard:managers:${params.id}`, "dashboard:managers"]
         }
     })
     const data: Manager = await response.json()
+
     return (
         <div className="flex flex-col gap-10 flex-grow-0 items-center justify-center">
             <ManagerCard data={data} />

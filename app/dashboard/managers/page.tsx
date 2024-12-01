@@ -1,9 +1,21 @@
 import { API_URL } from "@/constants"
-import { Manager } from "@/entities"
 import { authHeaders } from "@/helpers/authHeaders"
-import ManagerCards from "./_components/ManagerCards"
+import ModalCompo from "../_components/ModalCompo"
+import FormCreateManager from "./_components/FormCreateManager"
+import { LuPlus } from "react-icons/lu"
+import { Location } from "@/entities"
 
 const ManagersPage = async() => {
-    return null
+    const response = await fetch(`${API_URL}/locations`, {
+        headers: {
+            ...authHeaders()
+        }
+    })
+    const stores: Location[] = await response.json()
+    return (
+        <ModalCompo icon={ <LuPlus size={20}/> }>
+            <FormCreateManager stores={stores}/> 
+        </ModalCompo>
+    )
 }
 export default ManagersPage
